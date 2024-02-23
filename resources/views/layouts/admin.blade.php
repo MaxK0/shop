@@ -199,7 +199,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-{{ now()->year }} <a href="{{ route('main') }}">Магазин</a>.</strong>
+    <strong>Copyright &copy; 2014-{{ now()->year }} <a href="{{ route('admin.index') }}">Магазин</a>.</strong>
     Все права защищены.
 
   </footer>
