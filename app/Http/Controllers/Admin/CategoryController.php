@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $data = $request->validated();
         Category::create($data);
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 
     public function show(Category $category)
@@ -36,23 +36,22 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('admin.category.edit', compact($category));
+        return view('admin.category.edit', compact('category'));
     }
 
     public function update(UpdateRequest $request, Category $category)
     {
-        $request->id = $category->id;
         $data = $request->validated();
 
         $category->update($data);
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
         
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 }

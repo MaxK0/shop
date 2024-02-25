@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
-    public int $id;
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -24,9 +23,11 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required',
-            Rule::unique('categories')->ignore($this->id),
-            'string', 'max:255'],
+            'title' => [
+                'required',
+                Rule::unique('categories', 'title')->ignore($this->category),
+                'string', 'max:255'
+            ],
         ];
     }
 }
