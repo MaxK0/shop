@@ -1,33 +1,48 @@
 @extends('layouts.admin')
 
 @section('content')
-    <!-- Content Header (Page header) -->
+    {{-- Content header --}}
     <div class="content-header">
         <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Редактировать категорию</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item active">Главная</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
-  
-      <!-- Main content -->
-      <section class="content">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Изменить категорию</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active">Главная</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- End of content header --}}
+
+    {{-- Main content --}}
+    <section class="content">
         <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-          </div>
-  
-  
-          <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
+            <div class="row">
+                <div class="card card-primary col-md-12">
+                    <form action="{{ route('admin.categories.update', $category) }}" method="POST">
+                        @csrf
+                        @method('put')
+                        <div class="card-body">
+                            <div class="from-group">
+                                <label class="required" for="title">Заголовок</label>
+                                <input class="form-control @error('title') is-invalid @enderror" name="title"
+                                    type="text" placeholder="Еда" value="{{ old('title') ?? $category->title }}">
+                                @error('title')
+                                    <span class="invalid error-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" type="submit">Редактировать</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- End of main content --}}
 @endsection
