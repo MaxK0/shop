@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => [
                 'required',
-                Rule::unique('tags', 'tilte')->ignore($this->tag),
+                Rule::unique('tags', 'title')->ignore($this->tag),
                 'string', 'max:255'
             ]
         ];
