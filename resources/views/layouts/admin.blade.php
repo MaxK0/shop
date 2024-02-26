@@ -173,7 +173,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="{{ route('admin.colors.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-palette"></i>
               <p>
                 Цвета
