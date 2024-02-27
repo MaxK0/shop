@@ -53,13 +53,7 @@
                                     <td>{{ $user->lastname }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->age }}</td>
-                                    <td>
-                                        @if ($user->gender == 1)
-                                            Мужской
-                                        @elseif($user->gender == 2)
-                                            Женский
-                                        @endif
-                                    </td>
+                                    <td>{{ $user->genderTitle }}</td>
 
                                     <td>{{ $user->address }}</td>
                                 </tr>

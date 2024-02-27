@@ -66,13 +66,7 @@
                             </tr>
                             <tr>
                                 <th style="width: 20%;">Пол</th>
-                                <td>
-                                    @if ($user->gender == 1)
-                                        Мужской
-                                    @elseif($user->gender == 2)
-                                        Женский
-                                    @endif
-                                </td>
+                                <td>{{ $user->genderTitle }}</td>
                             </tr>
                             <tr>
                                 <th style="width: 20%;">Адрес</th>
