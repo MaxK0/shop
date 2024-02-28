@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     public function getGenderTitleAttribute()
     {
-        return self::getGenders()[$this->gender];
+        return self::getGenders()[$this->gender] ?? null;
     }
 
     /**
