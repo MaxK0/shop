@@ -24,7 +24,11 @@ return new class extends Migration
 
             $table->boolean('is_published')->default(true);
 
-            $table->foreignId('category_id')->nullable()->index()->constrained('categories');
+            $table->foreignId('category_id')
+            ->nullable()
+            ->constrained('categories')
+            ->nullOnDelete()
+            ->cascadeOnUpdate();
 
             $table->timestamps();
         });

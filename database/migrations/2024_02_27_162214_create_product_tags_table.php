@@ -13,8 +13,17 @@ return new class extends Migration
     {
         Schema::create('product_tags', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->index()->constrained('products');
-            $table->foreignId('tag_id')->index()->constrained('tags');
+            
+            $table->foreignId('product_id')
+            ->constrained('products')
+            ->cascadeOnDelete()
+            ->cascadeOnUpdate();
+
+            $table->foreignId('tag_id')
+            ->constrained('tags')
+            ->cascadeOnDelete()
+            ->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }
