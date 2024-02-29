@@ -33,11 +33,11 @@ class Product extends Model
 
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'product_tags');
+        return $this->belongsToMany(Tag::class, 'product_tags')->withTimestamps();
     }
 
     public function colors(): BelongsToMany
     {
-        return $this->belongsToMany(Color::class, 'color_products');
+        return $this->belongsToMany(Color::class, 'color_products')->withTimestamps();
     }
 }
