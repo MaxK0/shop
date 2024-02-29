@@ -108,9 +108,6 @@
                                         <input name="preview_image" type="file" class="custom-file-input">
                                         <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
                                     </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Загрузить</span>
-                                    </div>
                                 </div>
                             </div>
 

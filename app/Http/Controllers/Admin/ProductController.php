@@ -63,6 +63,9 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {       
+        $product->description = mb_split('\r\n', $product->description);
+        $product->content = mb_split('\r\n', $product->content);
+        
         return view('admin.product.show', compact('product'));
     }
 

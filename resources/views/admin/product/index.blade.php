@@ -40,6 +40,9 @@
                                 <th>Цена</th>
                                 <th>Количество</th>
                                 <th>Опуликовано</th>
+                                <th>Категория</th>
+                                <th>Теги</th>
+                                <th>Цвета</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,6 +54,17 @@
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->count }}</td>
                                     <td>{{ $product->is_published ? 'Да' : 'Нет' }}</td>
+                                    <td>{{ $product->category->title }}</td>
+                                    <td>
+                                        @foreach ($product->tags as $tag)
+                                            {{ $tag->title }} <br/>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($product->colors as $color)
+                                            {{ $color->title }} <br/>
+                                        @endforeach
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

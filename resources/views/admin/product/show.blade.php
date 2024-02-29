@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Товары</h1>
+                    <h1 class="m-0">Товар</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -51,11 +51,19 @@
                             </tr>
                             <tr>
                                 <th>Описание</th>
-                                <td>{{ $product->description }}</td>
+                                <td>
+                                    @foreach ($product->description as $row)
+                                        {{ $row }} <br/>
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <th>Контент</th>
-                                <td>{{ $product->content }}</td>
+                                <td>
+                                    @foreach ($product->content as $row)
+                                        {{ $row }} <br/>
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <th>Цена</th>
