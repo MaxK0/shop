@@ -35,28 +35,12 @@ class ProductController extends Controller
     {
         $data = $request->validated();
 
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-
-        $tagsIds = $data['tags'];
-        $colorsIds = $data['colors'];
-
-        unset($data['tags'], $data['colors']);
+        if (!empty($data['preview_image'])) $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);        
 
         $product = Product::create($data);
 
-        foreach ($tagsIds as $tagId) {
-            ProductTag::firstOrCreate([
-                'product_id' => $product->id,
-                'tag_id' => $tagId
-            ]);
-        }
-
-        foreach ($colorsIds as $colorId) {
-            ColorProduct::firstOrCreate([
-                'color_id' => $colorId,
-                'product_id' => $product->id
-            ]);
-        }
+        $product->colors()->attach($data['colors']);
+        $product->tags()->attach($data['tags']);
 
         return redirect()->route('admin.products.index');
     }
@@ -65,19 +49,39 @@ class ProductController extends Controller
     {       
         $product->description = mb_split('\r\n', $product->description);
         $product->content = mb_split('\r\n', $product->content);
-        
+
         return view('admin.product.show', compact('product'));
     }
 
-    public function edit()
+    public function edit(Product $product)
     {
+        $categories = Category::all();
+        $colors = Color::all();
+        $tags = Tag::all();
+
+        $selectedColorsIds = array_map(fn ($color) => $color['id'], $product->colors->toArray());
+        $selectedTagsIds = array_map(fn ($tag) => $tag['id'], $product->tags->toArray());
+
+        return view('admin.product.edit', compact('product', 'categories', 'colors', 'tags', 'selectedColorsIds', 'selectedTagsIds'));
     }
 
-    public function update(UpdateRequest $request)
+    public function update(UpdateRequest $request, Product $product)
     {
+        $data = $request->validated();
+        
+        if (empty($data['preview_image'])) unset($data['preview_image']);
+
+        $product->update($data);
+        $product->tags()->sync($data['tags'] ?? []);
+        $product->colors()->sync($data['colors'] ?? []);
+        
+        return redirect()->route('admin.products.index');
     }
 
-    public function destroy()
+    public function destroy(Product $product)
     {
+        $product->delete();   
+
+        return redirect()->route('admin.products.index');
     }
 }

@@ -243,6 +243,7 @@
     <script>
         $('.tags').select2()
         $('.colors').select2()
+        $('.is_published').seleect()
     </script>
 </body>
 
