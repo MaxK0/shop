@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -14,14 +16,28 @@ class Product extends Model
         'preview_image',
         'price', 'count',
         'is_published',
-        'user_id', 'category_id'
+        'category_id'
     ];
 
     protected $casts = [
         'price' => 'integer',
         'count' => 'integer',
         'is_published' => 'boolean',
-        'user_id' => 'integer',
         'category_id' => 'integer'
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'product_tags');
+    }
+
+    public function colors(): BelongsToMany
+    {
+        return $this->belongsToMany(Color::class, 'color_products');
+    }
 }
