@@ -1,22 +1,20 @@
 <template>
+    <Header />
     <main>
         <router-view />
     </main>
+    <Footer />
 </template>
 
-<script>
-    import { defineComponent } from 'vue';
-    
-    export default defineComponent({
-        components: {},
-        setup() {
-            return {
-                
-            };
-        },
-    });
+<script setup>
+import { ref } from "vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
-<style scoped>
-
+<style>
+main {
+    min-height: 95vh;
+    padding-top: 10vh;
+}
 </style>
