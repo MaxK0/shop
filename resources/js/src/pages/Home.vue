@@ -5,7 +5,7 @@
                 <ProductCard v-for="product in products" :key="product.id"
                     :title="product.title"
                     :description="product.description"
-                    :preview_image="product.preview_image"
+                    :preview="product.preview"
                     :price="product.price"
                     :count="product.count"
                     :category="product.category"

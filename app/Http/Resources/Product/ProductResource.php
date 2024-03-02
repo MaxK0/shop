@@ -18,7 +18,7 @@ class ProductResource extends JsonResource
             'title' => $this->title,
             'description' => nl2br($this->description),
             'content' => nl2br($this->content),
-            'preview_image' => asset('storage') . "/{$this->preview_image}",
+            'preview' => $this->imageUrl,
             'price' => $this->price,
             'count' => $this->count,
             'is_published' => $this->is_published,

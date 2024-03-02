@@ -40,4 +40,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Color::class, 'color_products')->withTimestamps();
     }
+
+    public function getImageUrlAttribute(): string
+    {
+        return url('storage/' . $this->preview_image);
+    }
 }

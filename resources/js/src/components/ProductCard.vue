@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <h3 class="title">{{ title }}</h3>
-        <img class="preview_img" :src="preview_image" alt="" />
+        <img class="preview" :src="preview" alt="" />
         <p class="desc" v-html="description"></p>
         <router-link
             class="category-link"
@@ -18,7 +18,7 @@
 <script setup>
 const props = defineProps({
     id: Number,
-    preview_image: String,
+    preview: String,
     title: String,
     description: String,
     content: String,
@@ -48,7 +48,7 @@ const props = defineProps({
     margin-bottom: 3rem;
 }
 
-.preview_img {
+.preview {
     width: 80%;
     height: 15rem;
     align-self: center;
