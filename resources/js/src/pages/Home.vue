@@ -1,28 +1,48 @@
 <template>
     <section class="section-products">
         <div class="container">
-            <ProductCard
-            title="Товар"
-            description="Описание"
-            preview_image=""
-            :price="1000"
-            :count="25"
-            :category="category"
-             />
+            <div class="cards">
+                <ProductCard v-for="product in products" :key="product.id"
+                    :title="product.title"
+                    :description="product.description"
+                    :preview_image="product.preview_image"
+                    :price="product.price"
+                    :count="product.count"
+                    :category="product.category"
+                />
+            </div>
         </div>
     </section>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
 
-const category = ref({
-    id: 1,
-    title: "Категория"
+const products = ref([]);
+
+const fetchProducts = () => {
+    axios
+        .get("http://shop/api/v1/products")
+        .then((response) => {
+            products.value = response.data.data
+        })
+        .catch((error) => {
+            console.error("Ошибка при получении товаров:", error)
+        })
+};
+
+onMounted(() => {
+    fetchProducts()
 })
 
 </script>
 
 <style>
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 </style>

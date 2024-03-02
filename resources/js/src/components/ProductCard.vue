@@ -2,7 +2,7 @@
     <div class="card">
         <h3 class="title">{{ title }}</h3>
         <img class="preview_img" :src="preview_image" alt="" />
-        <p class="desc">{{ description }}</p>
+        <p class="desc" v-html="description"></p>
         <router-link
             class="category-link"
             :to="'/?category_id=' + category.id"
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     id: Number,
     preview_image: String,
     title: String,
@@ -26,6 +26,7 @@ defineProps({
     count: Number,
     category: Object,
 });
+
 </script>
 
 <style>
