@@ -39,7 +39,7 @@ onMounted(() => {
 
 </script>
 
-<style>
+<style scoped>
 .cards {
     display: flex;
     flex-wrap: wrap;

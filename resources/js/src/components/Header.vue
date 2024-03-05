@@ -21,7 +21,7 @@ import { ref } from "vue"
 
 </script>
 
-<style>
+<style scoped>
 header {
     width: 100%;
     height: 7vh; 
