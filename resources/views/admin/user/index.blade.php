@@ -42,6 +42,7 @@
                                 <th>Возраст</th>
                                 <th>Пол</th>
                                 <th>Адрес</th>
+                                <th>Роль</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,8 +55,8 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->age }}</td>
                                     <td>{{ $user->genderTitle }}</td>
-
                                     <td>{{ $user->address }}</td>
+                                    <td>{{ $user->role }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

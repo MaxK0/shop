@@ -28,6 +28,11 @@ class User extends Authenticatable
         return self::getGenders()[$this->gender] ?? null;
     }
 
+    public function getRoleAttribute()
+    {
+        return Role::find($this->role_id)->name;
+    }
+
     /**
      * The attributes that are mass assignable.
      *

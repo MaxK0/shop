@@ -72,6 +72,10 @@
                                 <th style="width: 20%;">Адрес</th>
                                 <td>{{ $user->address }}</td>
                             </tr>
+                            <tr>
+                                <th style="width: 20%;">Роль</th>
+                                <td>{{ $user->role }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

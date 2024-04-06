@@ -31,6 +31,7 @@ class UpdateRequest extends FormRequest
             'age' => ['nullable', 'integer'],
             'address' => ['nullable', 'string', 'max:255'],
             'gender' => ['nullable', 'integer'],
+            'role_id' => ['nullable', 'integer']
         ]; 
     }
 }
