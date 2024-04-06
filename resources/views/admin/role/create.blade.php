@@ -34,9 +34,9 @@
                                     <span class="invalid error-feedback">{{ $message }}</span>
                                 @enderror
 
-                                <label class="required" for="name">Заголовок</label>
+                                <label class="required" for="name">Название</label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    type="text" placeholder="F2271C" value="{{ old('name') }}">
+                                    type="text" placeholder="Админ" value="{{ old('name') }}">
                                 @error('name')
                                     <span class="invalid error-feedback">{{ $message }}</span>
                                 @enderror
