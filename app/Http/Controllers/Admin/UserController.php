@@ -28,6 +28,9 @@ class UserController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+
+        if (!$data['role_id']) $data['role_id'] = 0; 
+
         User::create($data);
         
         return redirect()->route('admin.users.index');
