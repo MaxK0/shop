@@ -75,7 +75,7 @@
                             </tr>
                             <tr>
                                 <th>Категория</th>
-                                <td>{{ $product->category->title }}</td>
+                                <td>{{ $product->category ? $product->category->title : '' }}</td>
                             </tr>
                             <tr>
                                 <th>Теги</th>

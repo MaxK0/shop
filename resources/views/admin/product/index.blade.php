@@ -54,7 +54,7 @@
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->count }}</td>
                                     <td>{{ $product->is_published ? 'Да' : 'Нет' }}</td>
-                                    <td>{{ $product->category->title }}</td>
+                                    <td>{{ $product->category ? $product->category->title : '' }}</td>
                                     <td>
                                         @foreach ($product->tags as $tag)
                                             {{ $tag->title }} <br/>
