@@ -20,12 +20,12 @@
         </div>
 
         <div class="card__desc">
-            <router-link 
+            <router-link v-if="category"
                 class="category-link"
                 :to="'/?category_id=' + category.id">
                 {{ category.title }}
             </router-link>
-            <h3 class="title">{{ title }}</h3>
+            <h5 class="title">{{ title }}</h5>
             <p class="price">{{ price }} рублей</p>
         </div>
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="quickView__inf">
-            <h3 class="quickView__title">{{ title }}</h3>
+            <h4 class="quickView__title">{{ title }}</h4>
             <div class="quickView__rating">
                 <div class="stars">
 
@@ -102,16 +102,15 @@ function quickView() {
     align-items: flex-start;
     justify-content: center;
     row-gap: 1rem;
-    border-radius: 2rem;
     padding: 2rem;
+    border-radius: var(--border-radius);
 }
 
 .card__main {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 37rem;    
-    
+    height: 35rem;    
 }
 
 .card__main > div {    

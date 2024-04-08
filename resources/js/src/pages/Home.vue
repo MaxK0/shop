@@ -1,5 +1,5 @@
 <template>
-    <section class="section-products">
+    <section class="products">
         <div class="container">
             <div class="cards">
                 <ProductCard v-for="product in products" :key="product.id"
