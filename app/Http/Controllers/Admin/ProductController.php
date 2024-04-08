@@ -39,8 +39,8 @@ class ProductController extends Controller
 
         $product = Product::create($data);
 
-        $product->colors()->attach($data['colors']);
-        $product->tags()->attach($data['tags']);
+        $product->colors()->attach($data['colors'] ?? []);
+        $product->tags()->attach($data['tags'] ?? []);
 
         return redirect()->route('admin.products.index');
     }
