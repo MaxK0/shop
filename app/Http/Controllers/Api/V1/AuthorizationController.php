@@ -40,6 +40,8 @@ class AuthorizationController extends Controller
 
         $data->password = Hash::make($data->password);
 
+        if (!$data['role_id']) $data['role_id'] = 0; 
+
         $user = User::create($data);
 
         Auth::login($user);
