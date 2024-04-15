@@ -16,8 +16,7 @@ class AuthorizationController extends Controller
     {
         $data = $request->validated();
 
-        /**@var User $user */
-        if ($user = !Auth::attempt($data)) {
+        if (!Auth::attempt($data)) {
             return response()->json(
                 [
                     'message' => 'Неправильный логин или пароль'
@@ -26,7 +25,9 @@ class AuthorizationController extends Controller
             );
         }
 
-        $token = $user->createToken()->plainTextToken;
+        $user = User::where('email', $request->email)->first();
+
+        $token = $user->createToken('token')->plainTextToken;
 
         return response()->json([
             'token' => $token,
@@ -46,7 +47,7 @@ class AuthorizationController extends Controller
 
         Auth::login($user);
 
-        $token = $user->createToken()->plainTextToken;
+        $token = $user->createToken('token')->plainTextToken;
 
         return response()->json([
             'token' => $token
