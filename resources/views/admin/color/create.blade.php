@@ -28,7 +28,7 @@
                       <div class="card-body">
                         <div class="from-group">
                           <label class="required" for="title">Заголовок</label>
-                          <input class="form-control @error('title') is-invalid @enderror" name="title" type="text" placeholder="Еда" value="{{ old('title') }}">
+                          <input class="form-control @error('title') is-invalid @enderror" name="title" type="text" placeholder="fff" value="{{ old('title') }}">
                           @error('title')
                             <span class="invalid error-feedback">{{ $message }}</span>
                           @enderror
