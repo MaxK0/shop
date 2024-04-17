@@ -214,4 +214,13 @@ button {
 
 /* End of buttons */
 
+.error {
+    margin-top: -1.5rem;
+    color: red;
+}
+
+.invalid {
+    border-color: red;
+}
+
 /* End of form */
