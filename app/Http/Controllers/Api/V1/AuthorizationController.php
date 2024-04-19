@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\LoginRequest;
 use App\Http\Requests\Api\V1\RegisterRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthorizationController extends Controller
 {
     public function login(LoginRequest $request)
-    {
+    {       
         $data = $request->validated();
 
         if (!Auth::attempt($data)) {
@@ -21,18 +21,18 @@ class AuthorizationController extends Controller
                 [
                     'message' => 'Неправильный логин или пароль'
                 ],
-                401
+                Response::HTTP_UNAUTHORIZED
             );
         }
 
-        $user = User::where('email', $request->email)->first();
+        $request->session()->regenerate();
 
-        $token = $user->createToken('token')->plainTextToken;
-
-        return response()->json([
-            'token' => $token,
-            'user' => $user->toArray()
-        ]);
+        return response()->json(
+            [
+                'user' => $request->user()
+            ],
+            Response::HTTP_CREATED
+        );
     }
 
     public function register(RegisterRequest $request)
@@ -41,16 +41,17 @@ class AuthorizationController extends Controller
 
         $data->password = Hash::make($data->password);
 
-        if (!$data['role_id']) $data['role_id'] = 0; 
+        if (!$data['role_id']) $data['role_id'] = 0;
 
         $user = User::create($data);
 
         Auth::login($user);
 
-        $token = $user->createToken('token')->plainTextToken;
-
-        return response()->json([
-            'token' => $token
-        ]);
+        return response()->json(
+            [
+                'message' => 'Регистрация выполнена!'
+            ],
+            Response::HTTP_CREATED
+        );
     }
 }
