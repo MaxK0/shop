@@ -39,6 +39,7 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 const form = ref({
     email: "",
@@ -49,14 +50,17 @@ const errors = ref({});
 
 const router = useRouter();
 
+const store = useStore();
+
 const login = () => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
         errors.value = {};
         axios
             .post("/api/v1/login", form.value)
-            .then((res) => {                
-                if (res.status === 200) {
-                    // localStorage.setItem("token", res.data.token);
+            .then((res) => {
+                if (res.status === 201) {
+                    store.commit("setUser", res.data.user);
+                    store.commit("setIsAuth", true);
                     router.push("/");
                 }
             })
