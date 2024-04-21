@@ -6,24 +6,44 @@
             </router-link>
             <nav class="header__nav">
                 <ul>
-                    <li><router-link to="/shop" class="link">Магазин</router-link></li>
-                    <li><router-link to="/about" class="link">О нас</router-link></li>
-                    <li><router-link to="/contact" class="link">Контакты</router-link></li>
-                    <li><router-link to="/login" class="link">Войти</router-link>/<router-link to="/register" class="link">Зарегистрироваться</router-link></li>
-                    <li><button @click="logout" class="link">Выйти</button></li>
+                    <li>
+                        <router-link to="/shop" class="link"
+                            >Магазин</router-link
+                        >
+                    </li>
+                    <li>
+                        <router-link to="/about" class="link"
+                            >О нас</router-link
+                        >
+                    </li>
+                    <li>
+                        <router-link to="/contact" class="link"
+                            >Контакты</router-link
+                        >
+                    </li>
+                    <li v-if="!isAuth">
+                        <router-link to="/login" class="link">Войти</router-link
+                        >/<router-link to="/register" class="link"
+                            >Зарегистрироваться</router-link
+                        >
+                    </li>
+                    <li v-if="isAuth">
+                        <button @click="logout" class="link">Выйти</button>
+                    </li>
                 </ul>
             </nav>
-        </div>        
+        </div>
     </header>
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { computed } from "vue";
+import { useStore } from "vuex";
 
-const logout = () => {
-    
-}
+const store = useStore();
+const isAuth = computed(() => store.state.isAuth);
 
+const logout = () => {};
 </script>
 
 <style scoped>
@@ -31,7 +51,7 @@ header {
     background-color: var(--second-color);
     color: var(--main-color);
     width: 100%;
-    height: 6rem; 
+    height: 6rem;
     display: flex;
     align-items: center;
     position: fixed;

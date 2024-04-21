@@ -1,9 +1,11 @@
 import { createStore } from "vuex";
 
 const store = createStore({
-    state: {
-        isAuth: false,
-        user: null,
+    state() {
+        return {
+            isAuth: false,
+            user: null,
+        };
     },
     mutations: {
         setIsAuth(state, value) {
@@ -12,9 +14,16 @@ const store = createStore({
         setUser(state, user) {
             state.user = user;
         },
-    },
-    getters: {
-        isAuth: (state) => state.isAuth,
+        setAuth(state, user) {
+            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("isAuth", true);
+            store.commit("setIsAuth", true);
+            store.commit("setUser", user);
+        },
+        setFromStorage(state) {
+            store.commit("setUser", JSON.parse(localStorage.getItem("user")));
+            store.commit("setIsAuth", localStorage.getItem("isAuth"));
+        },
     },
 });
 

@@ -58,9 +58,8 @@ const login = () => {
         axios
             .post("/api/v1/login", form.value)
             .then((res) => {
-                if (res.status === 201) {
-                    store.commit("setUser", res.data.user);
-                    store.commit("setIsAuth", true);
+                if (res.status === 201) {                    
+                    store.commit("setAuth", res.data.user);
                     router.push("/");
                 }
             })
