@@ -15,14 +15,8 @@ const store = createStore({
             state.user = user;
         },
         setAuth(state, user) {
-            localStorage.setItem("user", JSON.stringify(user));
-            localStorage.setItem("isAuth", true);
             store.commit("setIsAuth", true);
             store.commit("setUser", user);
-        },
-        setFromStorage(state) {
-            store.commit("setUser", JSON.parse(localStorage.getItem("user")));
-            store.commit("setIsAuth", localStorage.getItem("isAuth"));
         },
     },
 });
