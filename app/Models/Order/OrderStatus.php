@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Order;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class OrderStatus extends Model
 {
     use HasFactory;
 }

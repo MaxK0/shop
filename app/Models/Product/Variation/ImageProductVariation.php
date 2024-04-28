@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Product\Variation;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class ImageProductVariation extends Model
 {
     use HasFactory;
 }

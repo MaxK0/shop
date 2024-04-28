@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Payment;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class PaymentType extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'name'
-    ];
 }
