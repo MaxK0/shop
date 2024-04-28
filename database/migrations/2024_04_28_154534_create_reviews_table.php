@@ -11,19 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_tags', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            
-            $table->foreignId('product_id')
-            ->constrained('products')
-            ->cascadeOnDelete()
-            ->cascadeOnUpdate();
-
-            $table->foreignId('tag_id')
-            ->constrained('tags')
-            ->cascadeOnDelete()
-            ->cascadeOnUpdate();
-
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->tinyInteger('rating')->unsigned()->default(0);
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_tags');
+        Schema::dropIfExists('reviews');
     }
 };

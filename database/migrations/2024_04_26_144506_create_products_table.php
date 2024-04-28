@@ -13,23 +13,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-
+            $table->boolean('active')->default(true);
             $table->string('title');
             $table->text('description')->nullable();
-            $table->text('content');
-            $table->string('preview_image')->nullable();
-
-            $table->integer('price')->unsigned();
-            $table->integer('count')->unsigned();
-
-            $table->boolean('is_published')->default(true);
-
-            $table->foreignId('category_id')
-            ->nullable()
-            ->constrained('categories')
-            ->nullOnDelete()
-            ->cascadeOnUpdate();
-
+            $table->string('main_img')->nullable();
             $table->timestamps();
         });
     }
