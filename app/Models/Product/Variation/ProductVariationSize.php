@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ProductVariationSize extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'product_variation_id',
+        'size_id'
+    ];
+
+    protected $casts = [
+        'product_variation_id' => 'integer',
+        'size_id' => 'integer'
+    ];
 }

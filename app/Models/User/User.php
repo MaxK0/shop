@@ -3,7 +3,13 @@
 namespace App\Models\User;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Product\Variation\ProductVariation;
+use App\Models\Review;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,35 +21,15 @@ class User extends Authenticatable
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
 
-    private static function getGenders()
-    {
-        return [
-            self::GENDER_MALE => 'Мужской',
-            self::GENDER_FEMALE => 'Женский'
-        ];
-    }
-
-    public function getGenderTitleAttribute()
-    {
-        return self::getGenders()[$this->gender] ?? null;
-    }
-
-    public function getRoleAttribute()
-    {
-        return Role::find($this->role_id)->name;
-    }
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'surname', 'lastname',
-        'age', 'address', 'gender',
+        'email', 'password', 'active',
+        'name', 'lastname', 'patronymic',
+        'age', 'address', 'phone', 'gender',
         'role_id'
     ];
 
@@ -68,5 +54,34 @@ class User extends Authenticatable
         'age' => 'integer',
         'gender' => 'integer',
         'role_id' => 'integer',
+        'active' => 'boolean'
     ];
+
+    private static function getGenders(): array
+    {
+        return [
+            self::GENDER_MALE => 'Мужской',
+            self::GENDER_FEMALE => 'Женский'
+        ];
+    }
+
+    public function getGenderTitleAttribute(): ?string
+    {
+        return self::getGenders()[$this->gender] ?? null;
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function wishlist(): BelongsToMany
+    {
+        return $this->belongsToMany(ProductVariation::class, 'wishlists');
+    }
 }
