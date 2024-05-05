@@ -3,6 +3,7 @@
 namespace App\Models\Order;
 
 use App\Models\Address;
+use App\Models\Payment\Payment;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -45,5 +46,10 @@ class Order extends Model
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItems::class);
+    }
+
+    public function payment(): BelongsTo
+    {
+        return $this->belongsTo(Payment::class);
     }
 }
