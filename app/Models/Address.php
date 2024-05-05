@@ -17,6 +17,6 @@ class Address extends Model
 
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'address_from_id');
     }
 }
