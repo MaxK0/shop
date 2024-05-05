@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Product\Variation\ProductVariation;
+use App\Models\Product\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Manufacter extends Model
 {
@@ -15,8 +15,8 @@ class Manufacter extends Model
         'title'
     ];
 
-    public function productVariations(): BelongsToMany
+    public function products(): HasMany
     {
-        return $this->belongsToMany(ProductVariation::class);
+        return $this->hasMany(Product::class);
     }
 }

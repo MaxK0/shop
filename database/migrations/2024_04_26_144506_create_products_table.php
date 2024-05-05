@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('main_img')->nullable();
+            $table->foreignId('manufacter_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

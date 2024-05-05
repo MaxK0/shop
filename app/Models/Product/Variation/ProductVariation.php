@@ -6,11 +6,13 @@ use App\Models\Color;
 use App\Models\Image;
 use App\Models\Material;
 use App\Models\Order\OrderItems;
+use App\Models\Product\Product;
 use App\Models\Size;
 use App\Models\Tag;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -31,6 +33,11 @@ class ProductVariation extends Model
         'product_id' => 'integer',
         'size_id' => 'integer'
     ];
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
 
     public function colors(): BelongsToMany
     {
