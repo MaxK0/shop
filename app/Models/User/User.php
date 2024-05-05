@@ -4,6 +4,7 @@ namespace App\Models\User;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Order\Order;
 use App\Models\Product\Variation\ProductVariation;
 use App\Models\Review;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -83,5 +84,10 @@ class User extends Authenticatable
     public function wishlist(): BelongsToMany
     {
         return $this->belongsToMany(ProductVariation::class, 'wishlists');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

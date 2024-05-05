@@ -5,12 +5,14 @@ namespace App\Models\Product\Variation;
 use App\Models\Color;
 use App\Models\Image;
 use App\Models\Material;
+use App\Models\Order\OrderItems;
 use App\Models\Size;
 use App\Models\Tag;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductVariation extends Model
 {
@@ -58,5 +60,10 @@ class ProductVariation extends Model
     public function wishlist(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'wishlists');
+    }
+
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItems::class);
     }
 }
