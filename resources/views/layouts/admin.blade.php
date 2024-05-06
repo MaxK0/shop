@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     {{-- Own styles --}}
     <link rel="stylesheet" href="{{ asset('/assets/css/index.css') }}">
+    @vite('resources/css/app.css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

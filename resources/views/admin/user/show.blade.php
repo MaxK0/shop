@@ -50,15 +50,19 @@
                             </tr>
                             <tr>
                                 <th style="width: 20%;">Фамилия</th>
-                                <td>{{ $user->surname }}</td>
+                                <td>{{ $user->lastname }}</td>
                             </tr>
                             <tr>
                                 <th style="width: 20%;">Отчество</th>
-                                <td>{{ $user->lastname }}</td>
+                                <td>{{ $user->patronymic }}</td>
                             </tr>
                             <tr>
                                 <th style="width: 20%;">Email</th>
                                 <td>{{ $user->email }}</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%;">Телефон</th>
+                                <td>{{ $user->phone }}</td>
                             </tr>
                             <tr>
                                 <th style="width: 20%;">Возраст</th>
@@ -74,7 +78,7 @@
                             </tr>
                             <tr>
                                 <th style="width: 20%;">Роль</th>
-                                <td>{{ $user->role }}</td>
+                                <td>{{ $user->role->title }}</td>
                             </tr>
                         </tbody>
                     </table>

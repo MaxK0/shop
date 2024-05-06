@@ -36,19 +36,19 @@
                             </div>
 
                             <div class="from-group">
-                                <label for="surname">Фамилия</label>
-                                <input class="form-control @error('surname') is-invalid @enderror" name="surname"
-                                    type="text" placeholder="Иванов" value="{{ old('surname') }}">
-                                @error('surname')
+                                <label for="lastname">Фамилия</label>
+                                <input class="form-control @error('lastname') is-invalid @enderror" name="lastname"
+                                    type="text" placeholder="Иванов" value="{{ old('lastname') }}">
+                                @error('lastname')
                                     <span class="invalid error-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="from-group">
-                                <label for="lastname">Отчество</label>
-                                <input class="form-control @error('lastname') is-invalid @enderror" name="lastname"
-                                    type="text" placeholder="Иванович" value="{{ old('lastname') }}">
-                                @error('lastname')
+                                <label for="patronymic">Отчество</label>
+                                <input class="form-control @error('patronymic') is-invalid @enderror" name="patronymic"
+                                    type="text" placeholder="Иванович" value="{{ old('patronymic') }}">
+                                @error('patronymic')
                                     <span class="invalid error-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -58,6 +58,15 @@
                                 <input class="form-control @error('email') is-invalid @enderror" name="email"
                                     type="email" placeholder="ivan@gmail.com" value="{{ old('email') }}">
                                 @error('email')
+                                    <span class="invalid error-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="from-group">
+                                <label for="phone">Телефон</label>
+                                <input class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                    type="text" placeholder="79992227777" value="{{ old('phone') }}">
+                                @error('phone')
                                     <span class="invalid error-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -114,7 +123,7 @@
                                 <label for="role_id">Роль</label>
                                 <select name="role_id" class="form-control select2" style="width: 100%;">
                                     @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>{{ $role->title }}</option>
                                     @endforeach
                                 </select>
                                 @error('role_id')

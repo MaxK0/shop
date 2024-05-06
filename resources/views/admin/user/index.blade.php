@@ -39,6 +39,7 @@
                                 <th>Фамилия</th>
                                 <th>Отчество</th>
                                 <th>Email</th>
+                                <th>Телефон</th>
                                 <th>Возраст</th>
                                 <th>Пол</th>
                                 <th>Адрес</th>
@@ -50,21 +51,22 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td><a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</a></td>
-                                    <td>{{ $user->surname }}</td>
                                     <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->patronymic }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
                                     <td>{{ $user->age }}</td>
                                     <td>{{ $user->genderTitle }}</td>
                                     <td>{{ $user->address }}</td>
-                                    <td>{{ $user->role }}</td>
+                                    <td>{{ $user->role->title }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                {{-- End of card table --}}
-
+                {{-- End of card table --}}               
             </div>
+            {{$users->links()}}
         </div>
     </section>
     {{-- End of main content --}}
