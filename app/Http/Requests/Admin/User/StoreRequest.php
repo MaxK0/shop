@@ -24,14 +24,16 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'surname' => ['nullable', 'string', 'max:255'],
-            'lastname' => ['nullable', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'patronymic' => ['nullable', 'string', 'max:255'],
             'password' => ['required', 'confirmed', 'min:6', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
             'age' => ['nullable', 'integer'],
             'address' => ['nullable', 'string', 'max:255'],
             'gender' => ['nullable', 'integer'],
-            'role_id' => ['nullable', 'integer']
+            'phone' => ['nullable', 'string', 'max:11'],
+            'role_id' => ['nullable', 'integer'],
+            'active' => ['nullable', 'boolean']
         ];
     }
 }

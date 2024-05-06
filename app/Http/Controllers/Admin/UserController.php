@@ -5,22 +5,32 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
-use App\Models\Role;
-use App\Models\User;
+use App\Models\User\Role;
+use App\Models\User\User;
+use App\Services\RoleService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+
+    public function __construct(
+        protected UserService $userService,
+        protected RoleService $roleService
+    ) {
+    }
+
+    public function index(Request $request)
     {
-        $users = User::all();
+        //TODO: Исправить: при указании offset и переходе на другую страницу через Links, offset удаляется 
+        $users = $this->userService->getAllWithPaginate($request->get('offset'));
 
         return view('admin.user.index', compact('users'));
     }
 
     public function create()
     {
-        $roles = Role::all();
+        $roles = $this->roleService->all();
 
         return view('admin.user.create', compact('roles'));
     }
@@ -29,10 +39,8 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
-        if (!$data['role_id']) $data['role_id'] = 0; 
+        $this->userService->create($data);
 
-        User::create($data);
-        
         return redirect()->route('admin.users.index');
     }
 
@@ -43,7 +51,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $roles = Role::all();
+        $roles = $this->roleService->all();
 
         return view('admin.user.edit', compact('user', 'roles'));
     }
@@ -51,14 +59,16 @@ class UserController extends Controller
     public function update(UpdateRequest $request, User $user)
     {
         $data = $request->validated();
-        $user->update($data);
-        
+
+        $this->userService->update($user, $data);
+
         return redirect()->route('admin.users.index');
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
+        //TODO: Исправить: заместо одного пользователя удаляются все
+        $this->userService->delete($user);
 
         return redirect()->route('admin.users.index');
     }
