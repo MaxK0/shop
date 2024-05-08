@@ -7,9 +7,9 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class UserService
 {
-    public function getAllWithPaginate(?int $offset): LengthAwarePaginator
+    public function allWithPaginate(?int $perPage): LengthAwarePaginator
     {
-        return User::query()->paginate($offset ?? 10);
+        return User::query()->paginate($perPage ?? 10);
     }
 
     public function create(array $data): User

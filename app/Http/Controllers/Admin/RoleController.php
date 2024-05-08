@@ -17,7 +17,7 @@ class RoleController extends Controller
 
     public function index(Request $request)
     {
-        $roles = $this->roleService->getAllWIthPaginate($request->get('offset'));
+        $roles = $this->roleService->allWIthPaginate($request->get('perPage'));
 
         return view('admin.role.index', compact('roles'));
     }

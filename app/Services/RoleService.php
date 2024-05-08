@@ -13,9 +13,9 @@ class RoleService
         return Role::all();
     }
 
-    public function getAllWIthPaginate(?int $offset): LengthAwarePaginator
+    public function allWIthPaginate(?int $perPage): LengthAwarePaginator
     {
-        return Role::query()->paginate($offset ?? 10);
+        return Role::query()->paginate($perPage ?? 10);
     }
 
     public function create(array $data): Role
