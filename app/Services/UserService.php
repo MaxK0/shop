@@ -19,11 +19,11 @@ class UserService
 
     public function update(User $user, array $data): int
     {
-        return $user::query()->update($data);
+        return $user->update($data);
     }
 
-    public function delete(User $user): mixed
+    public function delete(User $user): ?bool
     {
-        return $user::query()->delete();
+        return $user->delete();
     }
 }
