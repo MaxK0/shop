@@ -17,7 +17,7 @@ class UserService
         return User::query()->create($data);
     }
 
-    public function update(User $user, array $data): int
+    public function update(User $user, array $data): bool
     {
         return $user->update($data);
     }

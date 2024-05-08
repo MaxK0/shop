@@ -67,7 +67,6 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        //TODO: Исправить: заместо одного пользователя удаляются все
         $this->userService->delete($user);
 
         return redirect()->route('admin.users.index');
