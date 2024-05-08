@@ -5,14 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Role\StoreRequest;
 use App\Http\Requests\Admin\Role\UpdateRequest;
-use App\Models\Role;
+use App\Models\User\Role;
+use App\Services\RoleService;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    public function index()
+    public function __construct(protected RoleService $roleService)
     {
-        $roles = Role::all();
+    }
+
+    public function index(Request $request)
+    {
+        $roles = $this->roleService->getAllWIthPaginate($request->get('offset'));
 
         return view('admin.role.index', compact('roles'));
     }
@@ -26,7 +31,7 @@ class RoleController extends Controller
     {
         $data = $request->validated();
 
-        Role::create($data);
+        $this->roleService->create($data);
 
         return redirect()->route('admin.roles.index');
     }
@@ -45,14 +50,14 @@ class RoleController extends Controller
     {
         $data = $request->validated();
 
-        $role->update($data);
+        $this->roleService->update($role, $data);
 
         return redirect()->route('admin.roles.index');
     }
 
     public function destroy(Role $role)
     {
-        $role->delete();
+        $this->roleService->delete($role);
 
         return redirect()->route('admin.roles.index');
     }

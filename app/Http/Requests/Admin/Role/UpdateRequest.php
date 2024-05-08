@@ -23,8 +23,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['nullable', 'integer', Rule::unique('roles', 'id')->ignore($this->role)],
-            'name' => ['required', 'string', 'max:255', Rule::unique('roles', 'name')->ignore($this->role)]
+            'id' => ['nullable', 'integer', Rule::unique('roles')->ignore($this->role)],
+            'title' => ['required', 'string', 'max:255', Rule::unique('roles')->ignore($this->role)]
         ];
     }
 }
