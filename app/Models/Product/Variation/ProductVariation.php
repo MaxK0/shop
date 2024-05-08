@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ProductVariation extends Model
 {
@@ -54,9 +55,9 @@ class ProductVariation extends Model
         return $this->belongsToMany(Material::class);
     }
 
-    public function sizes(): BelongsToMany
+    public function size(): HasOne
     {
-        return $this->belongsToMany(Size::class);
+        return $this->hasOne(Size::class);
     }
 
     public function tags(): BelongsToMany

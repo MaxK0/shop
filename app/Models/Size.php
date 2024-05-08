@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\Product\Variation\ProductVariation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Size extends Model
 {
@@ -15,8 +15,8 @@ class Size extends Model
         'title'
     ];
 
-    public function productVariations(): BelongsToMany
+    public function productVariations(): BelongsTo
     {
-        return $this->belongsToMany(ProductVariation::class);
+        return $this->belongsTo(ProductVariation::class);
     }
 }
