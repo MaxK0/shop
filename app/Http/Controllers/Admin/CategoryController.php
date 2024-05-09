@@ -6,13 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\StoreRequest;
 use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function __construct(protected CategoryService $categoryService)
     {
-        $categories = Category::all();
+    }
+
+    public function index(Request $request)
+    {
+        $categories = $this->categoryService->allWIthPaginate($request->get('perPage'));
+
         return view('admin.category.index', compact('categories'));
     }
 
@@ -22,9 +28,10 @@ class CategoryController extends Controller
     }
 
     public function store(StoreRequest $request)
-    {        
+    {
         $data = $request->validated();
-        Category::create($data);
+
+        $this->categoryService->create($data);
 
         return redirect()->route('admin.categories.index');
     }
@@ -43,15 +50,15 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
 
-        $category->update($data);
+        $this->categoryService->update($category, $data);
 
         return redirect()->route('admin.categories.index');
     }
 
     public function destroy(Category $category)
     {
-        $category->delete();
-        
+        $this->categoryService->delete($category);
+
         return redirect()->route('admin.categories.index');
     }
 }
