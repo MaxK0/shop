@@ -6,13 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Tag\StoreRequest;
 use App\Http\Requests\Admin\Tag\UpdateRequest;
 use App\Models\Tag;
+use App\Services\TagService;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function index()
+    public function __construct(protected TagService $tagService)
     {
-        $tags = Tag::all();
+    }
+
+    public function index(Request $request)
+    {
+        $tags = $this->tagService->allWIthPaginate($request->get('perPage'));
+
         return view('admin.tag.index', compact('tags'));
     }
 
@@ -24,7 +30,8 @@ class TagController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        Tag::create($data);
+
+        $this->tagService->create($data);
 
         return redirect()->route('admin.tags.index');
     }
@@ -42,14 +49,15 @@ class TagController extends Controller
     public function update(UpdateRequest $request, Tag $tag)
     {
         $data = $request->validated();
-        $tag->update($data);
+
+        $this->tagService->update($tag, $data);
 
         return redirect()->route('admin.tags.index');
     }
 
     public function destroy(Tag $tag)
     {
-        $tag->delete();
+        $this->tagService->delete($tag);
 
         return redirect()->route('admin.tags.index');
     }
