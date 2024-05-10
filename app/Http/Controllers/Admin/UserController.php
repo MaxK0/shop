@@ -23,7 +23,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         //TODO: Исправить: при указании offset и переходе на другую страницу через Links, offset удаляется 
-        $users = $this->userService->allWithPaginate($request->get('perPage'));
+        $users = $this->userService->allWithRolePaginate($request->get('perPage'));
 
         return view('admin.user.index', compact('users'));
     }
