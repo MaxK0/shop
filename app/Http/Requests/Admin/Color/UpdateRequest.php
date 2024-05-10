@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => [
                 'required',
-                Rule::unique('colors', 'title')->ignore($this->color),
+                Rule::unique('colors')->ignore($this->color),
                 'regex:/^[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$/'
             ]
         ];

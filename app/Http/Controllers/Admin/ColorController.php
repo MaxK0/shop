@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Color\StoreRequest;
 use App\Http\Requests\Admin\Color\UpdateRequest;
 use App\Models\Color;
+use App\Services\ColorService;
 use Illuminate\Http\Request;
 
 class ColorController extends Controller
 {
-    public function index()
+    public function __construct(protected ColorService $colorService) {}
+
+    public function index(Request $request)
     {
-        $colors = Color::all();
+        $colors = $this->colorService->allWIthPaginate($request->get('perPage'));
         
         return view('admin.color.index', compact('colors'));
     }
@@ -25,7 +28,8 @@ class ColorController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        Color::create($data);
+
+        $this->colorService->create($data);
         
         return redirect()->route('admin.colors.index');
     }
@@ -43,14 +47,15 @@ class ColorController extends Controller
     public function update(UpdateRequest $request, Color $color)
     {
         $data = $request->validated();
-        $color->update($data);
-        
+
+        $this->colorService->update($color, $data);
+
         return redirect()->route('admin.colors.index');
     }
 
     public function destroy(Color $color)
     {
-        $color->delete();
+        $this->colorService->delete($color);
 
         return redirect()->route('admin.colors.index');
     }
