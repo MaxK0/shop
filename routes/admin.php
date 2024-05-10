@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ManufacterController;
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagController;
@@ -19,4 +20,5 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('products', ProductController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('manufacters', ManufacterController::class);
+    Route::resource('materials', MaterialController::class);
 });
