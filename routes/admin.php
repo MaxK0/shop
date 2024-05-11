@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ManufacterController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -21,4 +22,5 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('roles', RoleController::class);
     Route::resource('manufacters', ManufacterController::class);
     Route::resource('materials', MaterialController::class);
+    Route::resource('sizes', SizeController::class);
 });
