@@ -11,7 +11,11 @@ class PaymentType extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'id', 'title'
+    ];
+
+    protected $casts = [
+        'id' => 'integer'
     ];
 
     public function payments(): HasMany

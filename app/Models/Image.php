@@ -12,7 +12,11 @@ class Image extends Model
     use HasFactory;
 
     protected $fillable = [
-        'img_link'
+        'id', 'img_link'
+    ];
+
+    protected $casts = [
+        'id' => 'integer'
     ];
 
     public function productVariations(): BelongsToMany
