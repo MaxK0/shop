@@ -250,9 +250,7 @@
     <script src="{{ asset('/adminlte/dist/js/adminlte.js') }}"></script>
 
     <script>
-        $('.tags').select2()
-        $('.colors').select2()
-        $('.is_published').seleect()
+        $('.select2').select2()        
     </script>
 </body>
 
