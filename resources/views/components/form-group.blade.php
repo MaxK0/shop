@@ -9,8 +9,11 @@
     'valueOption' => 'id',
     'multiple' => false,
     'title' => 'title',
-    'selectEdit' => null
+    'selectEdit' => null,
+    'table' => null
 ])
+
+@if ($table) @php $value = old($name) ?? $table->$name @endphp  @endif 
 
 <div class="form-group">
     <label class="{{ $required ? 'required' : '' }}" for="{{ $name }}">{{ __($label) }}</label>
