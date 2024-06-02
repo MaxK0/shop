@@ -19,8 +19,7 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
+    <x-section-content>
             <div class="row">
 
                 {{-- Card header --}}
@@ -38,15 +37,15 @@
 
                 {{-- Card table --}}
                 <div class="card-body p-0">
-                    <table class="table table-sm">
+                    <table class="table table-sm show">
                         <tbody>
-                            <tr>
-                                <th style="width: 20%">Id</th>
+                            <tr>    
+                                <th>Id</th>
                                 <td>{{ $role->id }}</td>
                             </tr>
                             <tr>
-                                <th style="width: 20%">Название</th>
-                                <td>{{ $role->name }}</td>
+                                <th>Название</th>
+                                <td>{{ $role->title }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -54,7 +53,6 @@
                 {{-- End of card table --}}
 
             </div>
-        </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 @endsection

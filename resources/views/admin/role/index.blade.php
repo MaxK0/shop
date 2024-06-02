@@ -20,8 +20,7 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
+    <x-section-content>
             <div class="row">
 
                 {{-- Card header --}}
@@ -43,7 +42,7 @@
                             @foreach ($roles as $role)
                                 <tr>
                                     <td>{{ $role->id }}</td>
-                                    <td><a href="{{ route('admin.roles.show', $role->id) }}">{{ $role->name }}</a></td>
+                                    <td><a href="{{ route('admin.roles.show', $role->id) }}">{{ $role->title }}</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -52,8 +51,7 @@
                 {{-- End of card table --}}
 
             </div>
-        </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 
 @endsection

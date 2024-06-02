@@ -19,37 +19,23 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="card card-primary col-md-12">
-                    <form action="{{ route('admin.roles.update', $role) }}" method="POST">
-                        @csrf
-                        @method('put')
-                        <div class="card-body">
-                            <div class="from-group">
-                                <label for="id">Id</label>
-                                <input class="form-control @error('id') is-invalid @enderror" name="id"
-                                type="text" placeholder="1" value="{{ old('id') ?? $role->id }}">
-                                @error('id')
-                                    <span class="invalid error-feedback">{{ $message }}</span>
-                                @enderror
-
-                                <label class="required" for="name">Название</label>
-                                <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    type="text" placeholder="Админ" value="{{ old('name') ?? $role->name }}">
-                                @error('name')
-                                    <span class="invalid error-feedback">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary" type="submit">Редактировать</button>
-                        </div>
-                    </form>
-                </div>
+    <x-section-content>
+        <div class="row">
+            <div class="card card-primary col-md-12">
+                <form action="{{ route('admin.roles.update', $role) }}" method="POST">
+                    @csrf
+                    @method('put')
+                    <div class="card-body">
+                        <x-form-group name="id" label="Id" placeholder="1" :table="$role"></x-form-group>
+                        <x-form-group name="title" label="Название" placeholder="Админ" :table="$role"
+                            required></x-form-group>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" type="submit">Изменить</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 @endsection

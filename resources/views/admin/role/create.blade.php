@@ -19,28 +19,14 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
+    <x-section-content>        
             <div class="row">
                 <div class="card card-primary col-md-12">
                     <form action="{{ route('admin.roles.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
-                            <div class="from-group">
-                                <label for="id">Id</label>
-                                <input class="form-control @error('id') is-invalid @enderror" name="id"
-                                type="text" placeholder="1" value="{{ old('id') }}">
-                                @error('id')
-                                    <span class="invalid error-feedback">{{ $message }}</span>
-                                @enderror
-
-                                <label class="required" for="name">Название</label>
-                                <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    type="text" placeholder="Админ" value="{{ old('name') }}">
-                                @error('name')
-                                    <span class="invalid error-feedback">{{ $message }}</span>
-                                @enderror
-                            </div>
+                            <x-form-group name="id" label="Id" placeholder="1"></x-form-group>
+                            <x-form-group name="title" label="Название" placeholder="Админ" required></x-form-group>
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-primary" type="submit">Создать</button>
@@ -48,7 +34,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 @endsection
