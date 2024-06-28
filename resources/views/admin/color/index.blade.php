@@ -35,6 +35,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Код цвета</th>
+                            <th>Название</th>
                             <th>Цвет</th>
                         </tr>
                     </thead>
@@ -42,9 +43,10 @@
                         @foreach ($colors as $color)
                             <tr>
                                 <td>{{ $color->id }}</td>
+                                <td><a href="{{ route('admin.colors.show', $color->id) }}">{{ $color->code }}</a></td>
                                 <td><a href="{{ route('admin.colors.show', $color->id) }}">{{ $color->title }}</a></td>
                                 <td>
-                                    <div style="width: 16px; height: 16px; background: {{ '#' . $color->title }}"></div>
+                                    <div style="width: 16px; height: 16px; background: {{ '#' . $color->code }}"></div>
                                 </td>
                             </tr>
                         @endforeach

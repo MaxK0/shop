@@ -45,12 +45,16 @@
                         </tr>
                         <tr>
                             <th>Код цвета</th>
+                            <td>{{ $color->code }}</td>
+                        </tr>
+                        <tr>
+                            <th>Название</th>
                             <td>{{ $color->title }}</td>
                         </tr>
                         <tr>
                             <th>Цвет</th>
                             <td>
-                                <div style="width: 16px; height: 16px; background: {{ '#' . $color->title }}"></div>
+                                <div style="width: 16px; height: 16px; background: {{ '#' . $color->code }}"></div>
                             </td>
                         </tr>
                     </tbody>

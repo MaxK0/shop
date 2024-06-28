@@ -24,11 +24,12 @@ class UpdateRequest extends FormRequest
     {
         return [
             'id' => ['nullable', 'integer', Rule::unique('colors')->ignore($this->color)],
-            'title' => [
+            'code' => [
                 'required',
                 Rule::unique('colors')->ignore($this->color),
                 'regex:/^[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$/'
-            ]
+            ],
+            'title' => ['required', 'string', 'max:255', Rule::unique('colors')->ignore($this->color)]
         ];
     }
 }

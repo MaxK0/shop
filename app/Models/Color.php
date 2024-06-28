@@ -12,7 +12,7 @@ class Color extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'title'
+        'id', 'title', 'code'
     ];
 
     protected $casts = [

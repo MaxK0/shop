@@ -24,11 +24,12 @@ class StoreRequest extends FormRequest
     {
         return [
             'id' => ['nullable', 'integer', 'unique:color'],
-            'title' => [
+            'code' => [
                 'required',
                 'unique:colors',
                 'regex:/^[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$/'
-            ]
+            ],
+            'title' => ['required', 'unique:colors', 'string', 'max:255']
         ];
     }
 }

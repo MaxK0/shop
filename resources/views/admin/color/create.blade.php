@@ -26,7 +26,8 @@
                     @csrf
                     <div class="card-body">
                         <x-form-group name="id" label="Id" placeholder="1"></x-form-group>
-                        <x-form-group name="title" label="Код цвета" placeholder="000" required></x-form-group>
+                        <x-form-group name="code" label="Код цвета" placeholder="000" required></x-form-group>
+                        <x-form-group name="title" label="Название" placeholder="Черный" required></x-form-group>
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-primary" type="submit">Создать</button>
