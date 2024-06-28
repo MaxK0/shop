@@ -23,6 +23,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => ['nullable', 'integer', Rule::unique('categories')->ignore($this->category)],
             'title' => [
                 'required',
                 Rule::unique('categories')->ignore($this->category),
