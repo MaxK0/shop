@@ -23,6 +23,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => ['nullable', 'integer', Rule::unique('manufacters')->ignore($this->manufacter)],
             'title' => ['required', 'string', Rule::unique('manufacters')->ignore($this->manufacter), 'max:255']
         ];
     }
