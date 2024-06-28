@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Категория</h1>
+                    <h1 class="m-0">Цвет</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -19,8 +19,7 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
+    <x-section-content>
             <div class="row">
 
                 {{-- Card header --}}
@@ -38,18 +37,18 @@
 
                 {{-- Card table --}}
                 <div class="card-body p-0">
-                    <table class="table table-sm">
+                    <table class="table table-sm show">
                         <tbody>
-                            <tr>
-                                <th style="width: 20%">Id</th>
+                            <tr>    
+                                <th>Id</th>
                                 <td>{{ $color->id }}</td>
                             </tr>
                             <tr>
-                                <th style="width: 20%">Заголовок</th>
+                                <th>Код цвета</th>
                                 <td>{{ $color->title }}</td>
                             </tr>
                             <tr>
-                                <th style="width: 20%">Цвет</th>
+                                <th>Цвет</th>
                                 <td><div style="width: 16px; height: 16px; background: {{ '#' . $color->title }}"></div></td>
                             </tr>
                         </tbody>
@@ -58,7 +57,6 @@
                 {{-- End of card table --}}
 
             </div>
-        </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 @endsection

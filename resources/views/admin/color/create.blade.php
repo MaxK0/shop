@@ -19,28 +19,21 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
+    <x-section-content>        
             <div class="row">
                 <div class="card card-primary col-md-12">
-                  <form action="{{ route('admin.colors.store') }}" method="POST">
-                      @csrf
-                      <div class="card-body">
-                        <div class="from-group">
-                          <label class="required" for="title">Заголовок</label>
-                          <input class="form-control @error('title') is-invalid @enderror" name="title" type="text" placeholder="fff" value="{{ old('title') }}">
-                          @error('title')
-                            <span class="invalid error-feedback">{{ $message }}</span>
-                          @enderror
+                    <form action="{{ route('admin.colors.store') }}" method="POST">
+                        @csrf
+                        <div class="card-body">
+                            <x-form-group name="id" label="Id" placeholder="1"></x-form-group>
+                            <x-form-group name="title" label="Код цвета" placeholder="000" required></x-form-group>
                         </div>
-                      </div>
-                      <div class="card-footer">
-                        <button class="btn btn-primary" type="submit">Добавить</button>
-                      </div>
-                  </form>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" type="submit">Создать</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 @endsection

@@ -19,30 +19,23 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="card card-primary col-md-12">
-                    <form action="{{ route('admin.colors.update', $color) }}" method="POST">
-                        @csrf
-                        @method('put')
-                        <div class="card-body">
-                            <div class="from-group">
-                                <label class="required" for="title">Заголовок</label>
-                                <input class="form-control @error('title') is-invalid @enderror" name="title"
-                                    type="text" placeholder="F2271C" value="{{ old('title') ?? $color->title }}">
-                                @error('title')
-                                    <span class="invalid error-feedback">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary" type="submit">Редактировать</button>
-                        </div>
-                    </form>
-                </div>
+    <x-section-content>
+        <div class="row">
+            <div class="card card-primary col-md-12">
+                <form action="{{ route('admin.colors.update', $color) }}" method="POST">
+                    @csrf
+                    @method('put')
+                    <div class="card-body">
+                        <x-form-group name="id" label="Id" placeholder="1" :table="$color"></x-form-group>
+                        <x-form-group name="title" label="Код цвета" placeholder="000" :table="$color"
+                            required></x-form-group>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" type="submit">Изменить</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 @endsection

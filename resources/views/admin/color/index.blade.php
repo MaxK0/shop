@@ -20,8 +20,7 @@
     {{-- End of content header --}}
 
     {{-- Main content --}}
-    <section class="content">
-        <div class="container-fluid">
+    <x-section-content>
             <div class="row">
 
                 {{-- Card header --}}
@@ -36,7 +35,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Заголовок</th>
+                                <th>Код цвета</th>
                                 <th>Цвет</th>
                             </tr>
                         </thead>
@@ -54,8 +53,7 @@
                 {{-- End of card table --}}
 
             </div>
-        </div>
-    </section>
+    </x-section-content>
     {{-- End of main content --}}
 
 @endsection
