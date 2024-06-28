@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active"><a href="/admin">Главная</a></li>
                     </ol>
                 </div>
             </div>
@@ -20,43 +20,45 @@
 
     {{-- Main content --}}
     <x-section-content>
-            <div class="row">
+        <div class="row">
 
-                {{-- Card header --}}
-                <div class="card-header d-flex p-3" style="width: 100%">
-                    <div>
-                        <a href="{{ route('admin.colors.edit', $color) }}" class="btn btn-primary mr-3">Редактировать</a>
-                    </div>
-                    <form action="{{ route('admin.colors.destroy', $color) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form>
+            {{-- Card header --}}
+            <div class="card-header d-flex p-3" style="width: 100%">
+                <div>
+                    <a href="{{ route('admin.colors.edit', $color) }}" class="btn btn-primary mr-3">Редактировать</a>
                 </div>
-                {{-- End of card header --}}
-
-                {{-- Card table --}}
-                <div class="card-body p-0">
-                    <table class="table table-sm show">
-                        <tbody>
-                            <tr>    
-                                <th>Id</th>
-                                <td>{{ $color->id }}</td>
-                            </tr>
-                            <tr>
-                                <th>Код цвета</th>
-                                <td>{{ $color->title }}</td>
-                            </tr>
-                            <tr>
-                                <th>Цвет</th>
-                                <td><div style="width: 16px; height: 16px; background: {{ '#' . $color->title }}"></div></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                {{-- End of card table --}}
-
+                <form action="{{ route('admin.colors.destroy', $color) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
             </div>
+            {{-- End of card header --}}
+
+            {{-- Card table --}}
+            <div class="card-body p-0">
+                <table class="table table-sm show">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ $color->id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Код цвета</th>
+                            <td>{{ $color->title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Цвет</th>
+                            <td>
+                                <div style="width: 16px; height: 16px; background: {{ '#' . $color->title }}"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {{-- End of card table --}}
+
+        </div>
     </x-section-content>
     {{-- End of main content --}}
 @endsection

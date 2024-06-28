@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active"><a href="/admin">Главная</a></li>
                     </ol>
                 </div>
             </div>
@@ -38,8 +38,8 @@
 
                 {{-- Card table --}}
                 <div class="card-body p-0">
-                    <table class="table table-sm">                        
-                        <tbody>                            
+                    <table class="table table-sm">
+                        <tbody>
                             <tr>
                                 <th style="width: 20%;">Id</th>
                                 <td>{{ $user->id }}</td>

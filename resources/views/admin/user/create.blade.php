@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Главная</li>
+                        <li class="breadcrumb-item active"><a href="/admin">Главная</a></li>
                     </ol>
                 </div>
             </div>
@@ -31,13 +31,15 @@
 
                         <x-form-group name="patronymic" label="Отчество" placeholder="Иванович"></x-form-group>
 
-                        <x-form-group name="email" type="email" label="Email" placeholder="ivan@gmail.com" required></x-form-group>
+                        <x-form-group name="email" type="email" label="Email" placeholder="ivan@gmail.com"
+                            required></x-form-group>
 
                         <x-form-group name="phone" label="Телефон" placeholder="79992227777"></x-form-group>
 
                         <x-form-group name="age" label="Возраст" placeholder="20"></x-form-group>
 
-                        <x-form-group name="address" label="Адрес" placeholder="Москва - Ивановка 21, кв. 37"></x-form-group>  
+                        <x-form-group name="address" label="Адрес"
+                            placeholder="Москва - Ивановка 21, кв. 37"></x-form-group>
 
                         <div class="form-group">
                             <label for="gender">Пол</label>
@@ -48,12 +50,14 @@
                             <x-error name="gender"></x-error>
                         </div>
 
-                        <x-form-group name="password" type="password" label="Пароль" placeholder="********" required></x-form-group>
-                        
-                        <x-form-group name="password_confirmation" type="password" label="Подтверждение пароля" placeholder="********" required></x-form-group>
+                        <x-form-group name="password" type="password" label="Пароль" placeholder="********"
+                            required></x-form-group>
 
-                        <x-form-group name="role_id" type="select" label="Роль" placeholder="Выберите роль" :values=$roles
-                            ></x-form-group>                        
+                        <x-form-group name="password_confirmation" type="password" label="Подтверждение пароля"
+                            placeholder="********" required></x-form-group>
+
+                        <x-form-group name="role_id" type="select" label="Роль" placeholder="Выберите роль"
+                            :values=$roles></x-form-group>
                     </div>
 
                     <div class="card-footer">
