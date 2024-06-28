@@ -22,7 +22,7 @@ abstract class BaseService
 
     public function allWIthPaginate(?int $perPage = 25): LengthAwarePaginator
     {
-        return $this->model->query()->paginate($perPage ?? 25);
+        return $this->model->query()->paginate($perPage ?? 25)->withQueryString();
     }
 
     public function create(array $data): Model

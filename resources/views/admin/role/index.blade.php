@@ -51,6 +51,7 @@
                 {{-- End of card table --}}
 
             </div>
+            {{ $roles->links() }}
     </x-section-content>
     {{-- End of main content --}}
 
