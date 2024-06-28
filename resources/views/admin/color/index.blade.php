@@ -54,7 +54,7 @@
             {{-- End of card table --}}
 
         </div>
-        {{ $color->links() }}
+        {{ $colors->links() }}
     </x-section-content>
     {{-- End of main content --}}
 @endsection

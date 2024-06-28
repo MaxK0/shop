@@ -1,8 +1,0 @@
-.required::before {
-    content: '*';
-    color: red;
-}
-
-.table.show tr > th {
-    width: 20%;
-}

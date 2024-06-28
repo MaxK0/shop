@@ -7,10 +7,9 @@
     <title>@yield('title', 'Админка')</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ '/adminlte/plugins/select2/css/select2.min.css' }}">
+    <link rel="stylesheet" href="{{ asset('/adminlte/plugins/select2/css/select2.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('/adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
@@ -18,7 +17,7 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     {{-- Own styles --}}
-    <link rel="stylesheet" href="{{ asset('/assets/css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/adminlte.css') }}">
     @vite('resources/css/app.css')
 </head>
 
@@ -150,61 +149,88 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
-                                <i class="nav-icon fas fa-shopping-bag"></i>
-                                <p>
-                                    Заказы
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.products.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tshirt"></i>
-                                <p>
-                                    Товары
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.categories.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-list-ul"></i>
-                                <p>
-                                    Категории
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.tags.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    Теги
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.colors.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-palette"></i>
-                                <p>
-                                    Цвета
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.roles.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Роли
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.users.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
+                            <details class="nav-details">
+                                <summary class="nav-summary">
+                                    <i class="nav-icon fas fa-users"></i>
                                     Пользователи
-                                </p>
-                            </a>
-                        </li>                        
+                                </summary>
+                                <a href="{{ route('admin.users.index') }}" class="nav-details-link">
+                                    Пользователи
+                                </a>
+                                <a href="{{ route('admin.roles.index') }}" class="nav-details-link">
+                                    Роли
+                                </a>
+                            </details>
+                        </li>
+                        <li class="nav-item">
+                            <details class="nav-details">
+                                <summary class="nav-summary">
+                                    <i class="nav-icon fas fa-tshirt"></i>
+                                    Товары
+                                </summary>
+                                <a href="{{ route('admin.products.index') }}" class="nav-details-link">
+                                    Товары
+                                </a>
+                                {{-- <a href="{{ route('admin.products.variations.index') }}" class="nav-details-link">
+                                    Вариации товаров
+                                </a> --}}
+                                <a href="{{ route('admin.categories.index') }}" class="nav-details-link">
+                                    Категории
+                                </a>
+                                <a href="{{ route('admin.manufacters.index') }}" class="nav-details-link">
+                                    Производители
+                                </a>
+                                <a href="{{ route('admin.colors.index') }}" class="nav-details-link">
+                                    Цвета
+                                </a>
+                                <a href="{{ route('admin.materials.index') }}" class="nav-details-link">
+                                    Материалы
+                                </a>
+                                <a href="{{ route('admin.tags.index') }}" class="nav-details-link">
+                                    Теги
+                                </a>
+                                <a href="{{ route('admin.sizes.index') }}" class="nav-details-link">
+                                    Размеры
+                                </a>
+                            </details>
+                        {{-- </li>
+                        <li class="nav-item">
+                            <details class="nav-details">
+                                <summary class="nav-summary">
+                                    <i class="nav-icon fas fa-tshirt"></i>
+                                    Заказы
+                                </summary>
+                                <a href="{{ route('admin.orders.index') }}" class="nav-details-link">
+                                    Заказы
+                                </a>
+                                <a href="{{ route('admin.orders.statuses.index') }}" class="nav-details-link">
+                                    Статусы
+                                </a>
+                                <a href="{{ route('admin.addresses.index') }}" class="nav-details-link">
+                                    Адреса
+                                </a>
+                            </details>
+                        </li>
+                        <li class="nav-item">
+                            <details class="nav-details">
+                                <summary class="nav-summary">
+                                    <i class="nav-icon fas fa-tshirt"></i>
+                                    Оплата
+                                </summary>
+                                <a href="{{ route('admin.payments.index') }}" class="nav-details-link">
+                                    Чеки
+                                </a>
+                                <a href="{{ route('admin.payments.statuses.index') }}" class="nav-details-link">
+                                    Статусы
+                                </a>
+                                <a href="{{ route('admin.payments.types.index') }}" class="nav-details-link">
+                                    Типы
+                                </a>
+                                <a href="{{ route('admin.payments.systems.index') }}" class="nav-details-link">
+                                    Системы
+                                </a>
+                            </details>
+                        </li> --}}
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -250,7 +276,7 @@
     <script src="{{ asset('/adminlte/dist/js/adminlte.js') }}"></script>
 
     <script>
-        $('.select2').select2()        
+        $('.select2').select2()
     </script>
 </body>
 

@@ -1,0 +1,34 @@
+.required::before {
+    content: '*';
+    color: red;
+}
+
+.table.show tr > th {
+    width: 20%;
+}
+
+.nav-details {
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+    width: 100%;
+}
+
+.nav-summary {
+    color: #fff;    
+}
+
+.nav-details-link {
+    font-size: 1rem;
+    display: block;
+    transition: all ease-in-out .2s;
+    padding: .2rem;
+    padding-left: 1rem;
+}
+
+.sidebar .nav-details-link:hover {
+    color: #0056b3;
+}
+
+.nav-details .nav-details-link:first-of-type {
+    margin-top: .5rem;
+}
