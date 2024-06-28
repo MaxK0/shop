@@ -23,9 +23,10 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => ['nullable', 'integer', 'unique:color'],
             'title' => [
                 'required',
-                Rule::unique('colors'),
+                'unique:colors',
                 'regex:/^[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$/'
             ]
         ];
