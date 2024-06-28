@@ -22,6 +22,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => ['nullable', 'integer', 'unique:materials'],
             'title' => ['required', 'string', 'unique:materials', 'max:255']
         ];
     }
